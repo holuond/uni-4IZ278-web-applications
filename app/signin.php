@@ -20,15 +20,16 @@
                 require_once('inc/utils.php');
                 sign_user_in($db, $_POST['email'], $_POST['password']);
 
-            } else {
-                $errors['login'] = 'Incorrect username/password combination. Please try again.';
             }
+            $errors['login'] = 'Incorrect username/password combination. Please try again.';
         }
     }
 
     $pageTitle = 'Sign In';
     include('inc/header.php');
+
 ?>
+
 
     <div class="container-fluid">
         <div class="row">
