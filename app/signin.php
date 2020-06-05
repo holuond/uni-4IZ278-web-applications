@@ -2,9 +2,7 @@
     session_start();
 
     if (!empty($_SESSION["user_id"])) {
-        # TODO add correct link
-        header('Location: index.php');
-        exit();
+        include('inc/redirect_user_to_correct_dashboard.php');
     }
 
     $errors = null;

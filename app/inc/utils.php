@@ -32,7 +32,7 @@
                 exit();
             } else {
                 header('HTTP/1.0 401 Unauthorized');
-                die ("401: Unauthorized");
+                exit("401: Unauthorized");
             }
         }
     }
