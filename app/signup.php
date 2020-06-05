@@ -6,7 +6,7 @@
     if (!empty($_SESSION["user_id"])) {
         # TODO add correct link
         header('Location: index.php');
-        die();
+        exit();
     }
 
     $errors = null;
@@ -44,16 +44,9 @@
                     $newUserQuery->execute([$_POST['email'], $passwordHash]);
 
                     // Log in the user
-                    $userQuery = $db->prepare("SELECT * FROM users WHERE email = ? LIMIT 1");
-                    $userQuery->execute([$_POST['email']]);
-                    $userId = $userQuery->fetch(PDO::FETCH_ASSOC)['user_id'];
+                    require_once('inc/utils.php');
+                    sign_user_in($db, $_POST['email'], $_POST['password']);
 
-                    $_SESSION['user_id'] = $userId;
-                    $_SESSION['email'] = $_POST['email'];
-
-                    # TODO add correct link
-                    header('Location: index.php');
-                    exit();
                 } else {
                     require_once('inc/utils.php');
                     redirectToPageWithPost($_SERVER['PHP_SELF'], 'Provided e-mail is already registered.', 'alert-danger');
@@ -86,7 +79,7 @@
                                 echo '<div class="alert ' . $_POST['balloonType'] . '">' . $_POST['balloonMessage'] . '</div>';
                             }
                         ?>
-                        <div class="jumbotron">
+                        <div class="jumbotron pt-5 pb-5">
                             <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                                 <div class="form-group">
                                     <label for="email">
@@ -117,10 +110,11 @@
                                     <?php echo(@$errors['passwordRepeat'] ? '<small class="text-danger">' . $errors['passwordRepeat'] . '</small>' : ''); ?>
                                 </div>
                                 <?php echo(@$errors['passwordMatch'] ? '<div><small class="text-danger">' . $errors['passwordMatch'] . '<br><br></small></div>' : ''); ?>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary mt-2">
                                     Sign Up
                                 </button>
                             </form>
+                            <a href="signin.php" class="btn btn-outline-secondary btn-sm mt-3" >I already have an account</a>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 
   require_once('user_logged_in_or_kick.php');
 
-  if (!$currentUser['isexaminer']){
+  if (!$_SESSION['isexaminer']){
     header('HTTP/1.0 401 Unauthorized');
     die ("401: Unauthorized");
   }
