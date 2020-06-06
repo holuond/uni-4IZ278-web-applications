@@ -45,13 +45,16 @@
         return $arrayMember['user_id'];
     }
 
-    $examineeIdsWithoutAccess = array_map('getOnlyUserIds', array_diff($allExaminees, $testUsers));
+    $examineeIdsWithoutAccess = array_diff(
+        array_map('getOnlyUserIds', $allExaminees),
+        array_map('getOnlyUserIds', $testUsers));
 
     $examineesWithoutAccessQuery = $db->query("SELECT user_id, email 
           FROM `users` 
          WHERE `user_id` IN (" . implode(',', array_map('intval', $examineeIdsWithoutAccess)) . ")");
     $notInvitedArray = $examineesWithoutAccessQuery->fetchAll();
     #endregion get those not invited - without access to this test
+
 
     $percentageFormatter = new NumberFormatter('en_US', NumberFormatter::PERCENT);
 
