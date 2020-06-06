@@ -63,7 +63,13 @@
                             <?php if (empty($draftTests)) {
                                 echo('<p class="mt-2 mb-2 text-center"><small>You do not have any draft tests.</small></p>');
                             } else {
-                                foreach ($draftTests as $draftTest) { ?>
+                                $notFirstFlag = null;
+                                foreach ($draftTests as $draftTest) {
+                                    if ($notFirstFlag) {
+                                        echo('<hr>');
+                                    } else {
+                                        $notFirstFlag = 1;
+                                    }?>
                                     <div class="container-fluid mb-3">
                                         <div class="row">
                                             <div class="col-md-5">
@@ -93,7 +99,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr>
                                 <?php }
                             } ?>
                         </div>
@@ -104,7 +109,13 @@
                             <?php if (empty($activeTests)) {
                                 echo('<p class="mt-2 mb-2 text-center"><small>You do not have any active tests.</small></p>');
                             } else {
-                                foreach ($activeTests as $activeTest) { ?>
+                                $notFirstFlag = null;
+                                foreach ($activeTests as $activeTest) {
+                                    if ($notFirstFlag) {
+                                        echo('<hr>');
+                                    } else {
+                                        $notFirstFlag = 1;
+                                    }?>
                                     <div class="container-fluid mb-3">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -127,7 +138,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr>
+
                                 <?php }
                             } ?>
                         </div>
