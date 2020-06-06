@@ -6,9 +6,18 @@
         $editMode = False;
         $pageTitle = 'Add new test';
     } else {
+        // confirm ownership
         require_once('inc/examiner_owns_test.php');
-        $editMode = True;
-        $pageTitle = 'Edit test ' . htmlspecialchars($test['name']);
+
+        // owner can only edit his draft tests, not active ones
+        if($test['activation_time']){
+            require_once('inc/utils.php');
+            redirectToPageWithPost('examiner_dashboard.php', 'You cannot edit an active test.', 'alert-danger');
+            exit();
+        } else {
+            $editMode = True;
+            $pageTitle = 'Edit test ' . htmlspecialchars($test['name']);
+        }
     }
 
     $errors = null;

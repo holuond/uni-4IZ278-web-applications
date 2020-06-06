@@ -77,14 +77,14 @@
                                                        href="edit_test.php?test_id=<?php echo($draftTest['test_id']); ?>"><small>Edit</small></a>
                                                     <form action="activate_test.php" method="POST"
                                                           onsubmit="return confirm('Are you sure you want to activate this test? This cannot be undone.');">
-                                                        <button type="submit" name="activateDraft" id="activateDraft"
+                                                        <button type="submit" name="test_id" id="activateDraft"
                                                                 value="<?php echo($draftTest['test_id']); ?>"
                                                                 class="btn btn-sm btn-outline-secondary p-1 m-1 pr-2 pl-2">
                                                             <small>Activate</small></button>
                                                     </form>
                                                     <form action="remove_test.php" method="POST"
                                                           onsubmit="return confirm('Are you sure you want to remove this test? This cannot be undone.');">
-                                                        <button type="submit" name="removeDraft" id="removeDraft"
+                                                        <button type="submit" name="test_id" id="removeDraft"
                                                                 value="<?php echo($draftTest['test_id']); ?>"
                                                                 class="btn btn-sm btn-outline-secondary p-1 m-1 pr-2 pl-2">
                                                             <small>Remove</small></button>
@@ -118,7 +118,7 @@
                                                        href="test_properties.php?test_id=<?php echo($activeTest['test_id']); ?>"><small>Properties</small></a>
                                                     <form action="remove_test.php" method="POST"
                                                           onsubmit="return confirm('Are you sure you want to remove this test? This cannot be undone.');">
-                                                        <button type="submit" name="removeActive" id="removeActive"
+                                                        <button type="submit" name="test_id" id="removeActive"
                                                                 value="<?php echo($activeTest['test_id']); ?>"
                                                                 class="btn btn-sm btn-outline-secondary p-1 m-1 pr-2 pl-2">
                                                             <small>Remove</small></button>
