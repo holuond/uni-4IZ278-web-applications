@@ -18,13 +18,18 @@
                         <h4 class="p-3 text-white font-weight-bolder">eTester</h4>
                         <?php
                             if (!empty(@$_SESSION['user_id'])) {
+                                require_once('utils.php');
                                 echo('<nav class="p-3 mb-1">');
                                 if (@$_SESSION['isexaminee']) {
-                                    echo('<a href = "dashboard.php" class="pr-4 text-white" >Dashboard</a>');
+                                    $activeOrNot = endsWith($_SERVER["SCRIPT_NAME"], '/dashboard.php') ? ' style="text-decoration: underline;"' : '';
+                                    echo('<a href= "dashboard.php" class="mr-4 text-white" ' . $activeOrNot . '>Dashboard</a>');
                                 }
                                 if (@$_SESSION['isexaminer']) {
-                                    echo('<a href = "examiner_dashboard.php" class="pr-4 text-white" >Examiner Dashboard</a>');
+                                    $activeOrNot = endsWith($_SERVER["SCRIPT_NAME"], '/examiner_dashboard.php') ? ' style="text-decoration: underline;"' : '';
+                                    echo('<a href= "examiner_dashboard.php" class="mr-4 text-white" ' . $activeOrNot . '>Examiner Dashboard</a>');
                                 }
+                                $activeOrNot = endsWith($_SERVER["SCRIPT_NAME"], '/help.php') ? ' style="text-decoration: underline;"' : '';
+                                echo('<a href = "help.php" class="mr-4 text-white" ' . $activeOrNot . ' >Help</a>');
                                 echo('
                         </nav>
                         <a href="signout.php" class="mb-1 ml-auto text-white">Sign out</a>');
@@ -36,5 +41,4 @@
         </div>
         <div class="col-md-2"></div>
     </div>
-
 </header>
