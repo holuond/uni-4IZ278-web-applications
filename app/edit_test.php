@@ -2,6 +2,7 @@
     require_once('inc/examiner_logged_in_or_kick.php');
     require_once('inc/examiner_owns_test.php');
 
+
     $pageTitle = 'Edit test ' . htmlspecialchars($test['name']);
     include('inc/header.php');
 ?>
