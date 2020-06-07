@@ -129,7 +129,7 @@
                                                             <button type="submit" name="user_id" id="removeTestResult"
                                                                     value="<?php echo($submittedResult['user_id']); ?>"
                                                                     class="btn btn-sm btn-outline-secondary p-1 m-1 pr-2 pl-2">
-                                                                <small>Remove</small></button>
+                                                                <small>Remove result</small></button>
                                                         </form>
                                                     </div>
                                                 </div>
