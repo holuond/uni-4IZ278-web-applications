@@ -74,11 +74,11 @@
                         </h1>
                     </div>
                 </div>
-                <div class="row mt-2">
+                <div class="row mt-2 justify-content-center">
                     <?php
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             if (!empty($_POST['balloonMessage']) && !empty($_POST['balloonType'])) {
-                                echo '<div class="alert ' . $_POST['balloonType'] . '">' . $_POST['balloonMessage'] . '</div>';
+                                echo '<div class="alert ' . $_POST['balloonType'] . '"><small>' . $_POST['balloonMessage'] . '</small></div>';
                             }
                         }
                     ?>

@@ -76,9 +76,9 @@
                                 </button>
                             </form>
                             <?php #TODO Forgotten password ?>
-                            <button type="button" class="btn btn-outline-secondary btn-sm mt-3">
-                                I've forgotten my password
-                            </button>
+                            <a href="signup.php" class="btn btn-outline-secondary btn-sm mt-3">
+                                Take me to sign up
+                            </a>
                         </div>
                     </div>
                 </div>
