@@ -1,6 +1,6 @@
 <?php
-    require_once('inc/examiner_logged_in_or_kick.php');
-    require_once('inc/examiner_owns_test.php');
+    require_once('examiner_logged_in_or_kick.php');
+    require_once('examiner_owns_test.php');
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['test_id']) && !empty($_POST['user_id'])) {
         // user may not exist or may not be an examinee
@@ -15,24 +15,24 @@
 
 
         if (!$examinee) {
-            require_once('inc/utils.php');
-            redirectToPageWithPost('test_properties.php?test_id=' . htmlspecialchars($_POST['test_id']), 'Wrong operation. User does not exist.', 'alert-danger');
+            require_once('utils.php');
+            redirectToPageWithPost('https://eso.vse.cz/~holo00/etester/test_properties.php?test_id=' . htmlspecialchars($_POST['test_id']), 'Wrong operation. User does not exist.', 'alert-danger');
             exit();
         } elseif ($testUser) {
             $removeResultQuery = $db->prepare("UPDATE test_results SET score = NULL, submission_time = NULL, answersheet = NULL WHERE test_id = ? AND user_id = ?");
             $removeResultQuery->execute([$_POST['test_id'], $_POST['user_id']]);
 
-            require_once('inc/utils.php');
-            redirectToPageWithPost('test_properties.php?test_id=' . htmlspecialchars($_POST['test_id']), 'Test submission (result and answersheet) has been removed.  (' . @$examinee['email'] . ')', 'alert-success');
+            require_once('utils.php');
+            redirectToPageWithPost('https://eso.vse.cz/~holo00/etester/test_properties.php?test_id=' . htmlspecialchars($_POST['test_id']), 'Test submission (result and answersheet) has been removed.  (' . @$examinee['email'] . ')', 'alert-success');
             exit();
         } else {
-            require_once('inc/utils.php');
-            redirectToPageWithPost('test_properties.php?test_id=' . htmlspecialchars($_POST['test_id']), 'The examinee did not have a submitted result.', 'alert-warning');
+            require_once('utils.php');
+            redirectToPageWithPost('https://eso.vse.cz/~holo00/etester/test_properties.php?test_id=' . htmlspecialchars($_POST['test_id']), 'The examinee did not have a submitted result.', 'alert-warning');
             exit();
         }
     } else {
-        require_once('inc/utils.php');
-        redirectToPageWithPost('test_properties.php?test_id=' . htmlspecialchars($_POST['test_id']), 'Wrong operation.', 'alert-danger');
+        require_once('utils.php');
+        redirectToPageWithPost('https://eso.vse.cz/~holo00/etester/test_properties.php?test_id=' . htmlspecialchars($_POST['test_id']), 'Wrong operation.', 'alert-danger');
         exit();
     }
 

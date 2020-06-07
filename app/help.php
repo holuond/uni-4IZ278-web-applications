@@ -33,18 +33,19 @@
 <test xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="https://eso.vse.cz/~holo00/etester/inc/test_schema.xsd">
 	<question id="1">
-		<description>Question 1</description>
+		<description>Select verbs</description>
 		<answers>
-			<answer correct="false">WRONG</answer>
-			<answer correct="true">CORRECT</answer>
+			<answer id="1" correct="false">a car</answer>
+			<answer id="2" correct="true">to be</answer>
+			<answer id="3" correct="false">churches</answer>
+			<answer id="4" correct="true">to drive</answer>
 		</answers>
 	</question>
 	<question id="2">
-		<description>Question 2</description>
+		<description>Select nouns</description>
 		<answers>
-			<answer correct="false">WRONG</answer>
-			<answer correct="true">CORRECT</answer>
-			<answer correct="false">WRONG2</answer>
+			<answer id="1" correct="false">to live</answer>
+			<answer id="2" correct="false">to sleep</answer>
 		</answers>
 	</question>
 </test>')); ?></pre></span></small>

@@ -10,7 +10,7 @@
         require_once('inc/examiner_owns_test.php');
 
         // owner can only edit his draft tests, not active ones
-        if($test['activation_time']){
+        if ($test['activation_time']) {
             require_once('inc/utils.php');
             redirectToPageWithPost('examiner_dashboard.php', 'You cannot edit an active test.', 'alert-danger');
             exit();
@@ -37,11 +37,15 @@
                 if ($xml->schemaValidate('inc/test_schema.xsd')) {
                     // XML well-formed and valid
                     if (@$_POST['previewAction']) {
-                        // TODO make sure redirect link is ok after php file added
                         ?>
                         <form name='viewTest' action='view_test.php' method='POST'>
                             <input type='hidden' name='name' value='<?php echo($_POST['name']); ?>'>
                             <input type='hidden' name='xml' value='<?php echo($_POST['testcontents']); ?>'>
+                            <?php
+                                if ($editMode) {
+                                    echo('<input type="hidden" name="test_id" value="' . $_REQUEST['test_id'] . '">');
+                                }
+                            ?>
                         </form>
                         <script type='text/javascript'>
                             document.viewTest.submit();
@@ -60,7 +64,7 @@
                         require_once('inc/examiner_owns_test.php');
 
                         $editTestQuery = $db->prepare("UPDATE tests SET name=?, xml=? WHERE test_id=?");
-                        $editTestQuery->execute([$_POST['name'], $_POST['testcontents'], $_GET['test_id']]);
+                        $editTestQuery->execute([$_POST['name'], $_POST['testcontents'], $_REQUEST['test_id']]);
 
                         require_once('inc/utils.php');
                         redirectToPageWithPost('examiner_dashboard.php', 'Test successfully changed.', 'alert-success');
@@ -80,10 +84,10 @@
 
     if ($editMode) {
         // POST variables (potentially changed) have priority over values from DB
-        if (empty($_POST['name'])){
+        if (empty($_POST['name'])) {
             $name = $test['name'];
         }
-        if (empty($_POST['testcontents'])){
+        if (empty($_POST['testcontents'])) {
             $testContents = $test['xml'];
         }
     }
@@ -128,6 +132,11 @@
                                                                               rows="6"><?php echo(@$testContents); ?></textarea>
                             </div>
                             <?php echo(@$errors['testcontents'] ? '<div><small class="text-danger">' . $errors['testcontents'] . '</small></div>' : ''); ?>
+                            <?php
+                                if ($editMode) {
+                                    echo('<input type="hidden" name="test_id" value="' . $_REQUEST['test_id'] . '">');
+                                }
+                            ?>
                             <div class="mt-2">
                                 <button type="submit" name="previewAction" id="previewAction"
                                         value="1"

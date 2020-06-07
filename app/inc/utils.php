@@ -12,6 +12,34 @@
         <?php
     }
 
+    function redirectToCorrectDashboardWithPost($balloonMessage, $balloonType)
+    {
+        require('user_logged_in_or_kick.php');
+        if ($_SESSION['isexaminer']) {
+            ?>
+            <form name='redirect' action='examiner_dashboard.php' method='POST'>
+                <input type='hidden' name='balloonMessage' value='<?php echo($balloonMessage) ?>'>
+                <input type='hidden' name='balloonType' value='<?php echo($balloonType) ?>'>
+            </form>
+            <script type='text/javascript'>
+                document.redirect.submit();
+            </script>
+            <?php
+        } elseif ($_SESSION['isexaminee']) {
+            ?>
+            <form name='redirect' action='dashboard.php' method='POST'>
+                <input type='hidden' name='balloonMessage' value='<?php echo($balloonMessage) ?>'>
+                <input type='hidden' name='balloonType' value='<?php echo($balloonType) ?>'>
+            </form>
+            <script type='text/javascript'>
+                document.redirect.submit();
+            </script>
+            <?php
+        } else {
+            require('examinee_logged_in_or_kick.php');
+        }
+    }
+
     function sign_user_in($db, $email, $password)
     {
         $userQuery = $db->prepare("SELECT * FROM users WHERE email = ? LIMIT 1");
@@ -46,5 +74,6 @@
 
         return (substr($haystack, -$length) === $needle);
     }
+
 ?>
 

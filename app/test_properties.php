@@ -85,6 +85,9 @@
                     <div class="col-md-12 text-center">
                         <small>Active since <?php echo(date('Y-m-d H:i:s', $test['activation_time'])); ?></small>
                     </div>
+                    <div>
+                        <a href="view_test.php?test_id=<?php echo($test['test_id']); ?>" class="mt-3 btn btn-primary"><small>View questions</small></a>
+                    </div>
                 </div>
                 <div class="row mt-4 justify-content-center">
                     <h3>Examinees</h3>
@@ -122,7 +125,7 @@
                                                                     class="ml-auto"><?php echo($percentageFormatter->format($submittedResult['score'])); ?></span></small>
                                                         <a class="btn btn-sm ml-auto btn-outline-secondary p-1 m-1 pr-2 pl-2"
                                                            href="view_test.php?test_id=<?php echo($test['test_id']); ?>&user_id=<?php echo($submittedResult['user_id']); ?>"><small>View</small></a>
-                                                        <form action="remove_test_result.php" method="POST"
+                                                        <form action="inc/remove_test_result.php" method="POST"
                                                               onsubmit="return confirm('Are you sure you want to remove this test result? This cannot be undone.');">
                                                             <input type='hidden' name='test_id'
                                                                    value='<?php echo($test['test_id']); ?>'>
@@ -163,7 +166,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="d-flex w-100 flex-column flex-md-row align-items-center">
-                                                        <form action="remove_access_to_test.php" method="POST"
+                                                        <form action="inc/remove_access_to_test.php" method="POST"
                                                               onsubmit="return confirm('Are you sure you want to remove this examinee\'s access to the test? If the user is already in progress, test submission will not be allowed.');">
                                                             <input type='hidden' name='test_id'
                                                                    value='<?php echo($test['test_id']); ?>'>
@@ -209,7 +212,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="d-flex w-100 flex-column flex-md-row justify-content-end">
-                                                    <form action="grant_access_to_test.php" method="POST"
+                                                    <form action="inc/grant_access_to_test.php" method="POST"
                                                           onsubmit="return confirm('Are you sure you want to grant this examinee access to the test?');">
                                                         <input type='hidden' name='test_id'
                                                                value='<?php echo($test['test_id']); ?>'>

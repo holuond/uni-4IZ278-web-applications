@@ -88,7 +88,7 @@
                                                                 class="btn btn-sm btn-outline-secondary p-1 m-1 pr-2 pl-2">
                                                             <small>Activate</small></button>
                                                     </form>
-                                                    <form action="remove_test.php" method="POST"
+                                                    <form action="inc/remove_test.php" method="POST"
                                                           onsubmit="return confirm('Are you sure you want to remove this test? This cannot be undone.');">
                                                         <button type="submit" name="test_id" id="removeDraft"
                                                                 value="<?php echo($draftTest['test_id']); ?>"
@@ -127,7 +127,7 @@
                                                 <div class="d-flex w-100 flex-column flex-md-row align-items-center">
                                                     <a class="btn btn-sm ml-auto btn-outline-secondary p-1 m-1 pr-2 pl-2"
                                                        href="test_properties.php?test_id=<?php echo($activeTest['test_id']); ?>"><small>Properties</small></a>
-                                                    <form action="remove_test.php" method="POST"
+                                                    <form action="inc/remove_test.php" method="POST"
                                                           onsubmit="return confirm('Are you sure you want to remove this test? This cannot be undone.');">
                                                         <button type="submit" name="test_id" id="removeActive"
                                                                 value="<?php echo($activeTest['test_id']); ?>"
