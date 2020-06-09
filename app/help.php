@@ -60,10 +60,13 @@
                                 <h4>Examinee Tips</h4>
                             </div>
                             <div class="jumbotron pt-2 pb-2 mb-3">
-                                <small><span>Lorem ipsum</span></small>
+                                <small><span>If you don't see a test you are expecting to see, contact your examiner.</span></small>
                             </div>
                             <div class="jumbotron pt-2 pb-2 mb-3">
-                                <small><span>dolor sit amet</span></small>
+                                <small><span>There is no automated time limit. Consult your examiner about deadlines for your tests.</span></small>
+                            </div>
+                            <div class="jumbotron pt-2 pb-2 mb-3">
+                                <small><span>You can relaunch any test, but you can only submit each test once.</span></small>
                             </div>
                         </div>
                     </div>
