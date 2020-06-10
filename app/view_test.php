@@ -111,7 +111,7 @@
         exit();
     }
 
-    $pageTitle = 'View test ' . $test['name'];
+    $pageTitle = 'View test ' . htmlspecialchars($test['name']);
     include('inc/header.php');
 ?>
 

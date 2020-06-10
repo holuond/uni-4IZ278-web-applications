@@ -35,7 +35,7 @@
         exit();
     }
 
-    $pageTitle = 'Test ' . $test['name'];
+    $pageTitle = 'Test ' . htmlspecialchars($test['name']);
     include('inc/header.php');
 ?>
 
